@@ -11,6 +11,15 @@
 |
 */
 
+use App\Mail\GtMail;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/sendmail', function () {
+	
+	Mail::to('j.ngomnze@gabontelecom.ga')->send(new GtMail);
+	
+	return view('welcome');
 });

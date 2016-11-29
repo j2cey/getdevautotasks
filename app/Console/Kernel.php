@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Mail\GtMail;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\SendGtMails::class
     ];
 
     /**
@@ -26,6 +27,17 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        /*$schedule->command(GtMail::class, ['--force'])
+            ->everyMinute()
+            ->appendOutputTo('outputMailSend.txt');*/
+        /*$schedule->call(
+            function(){
+                Mail::to('j.ngomnze@gabontelecom.ga')->send(new GtMail);
+            })
+        ->everyMinute()
+        ->appendOutputTo('outputMailSend.txt');*/
+         $schedule->command('gtmail:send')
+                  ->everyMinute();
     }
 
     /**

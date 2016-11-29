@@ -39,6 +39,8 @@ class GtMail extends Mailable
 			->bcc($adress, $name)
 			->replyTo($adress, $name)
 			->subject($subject)
-			->attach('/var/www/gtdevautotasks/html/public/' . 'filetoattach.txt');
+			->attach('/tmp/siradbdump.csv')
+			//->attach('/var/www/gtdevautotasks/html/public/' . 'filetoattach.txt')
+			;
 	}
 }
